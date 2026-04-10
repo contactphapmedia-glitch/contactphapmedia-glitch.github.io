@@ -1,1 +1,365 @@
-test
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tử Vi & Bói - Xem Vận Mệnh AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #FFF8F0;
+            color: #1A1A1A;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a3e, #0d0d2b);
+            color: #F5C842;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #F5C842;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.1em;
+            color: #ddd;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #F5C842;
+            color: #1a1a3e;
+            padding: 14px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 200, 66, 0.4);
+        }
+
+        /* Features */
+        .features {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 1.8em;
+            color: #3E2723;
+            margin-bottom: 40px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid #F5E6C8;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+        .feature-card .icon {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+        }
+        .feature-card h3 {
+            color: #C0392B;
+            font-size: 1.15em;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Screenshots */
+        .screenshots {
+            background: linear-gradient(135deg, #1a1a3e, #0d0d2b);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .screenshots h2 {
+            color: #F5C842;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+        .screenshots-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 10px 0 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .screenshots-scroll img {
+            width: 200px;
+            border-radius: 16px;
+            border: 2px solid #F5C842;
+            flex-shrink: 0;
+        }
+
+        /* Premium */
+        .premium {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .premium h2 {
+            font-size: 1.8em;
+            color: #3E2723;
+            margin-bottom: 12px;
+        }
+        .premium .subtitle {
+            color: #777;
+            margin-bottom: 36px;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .price-card {
+            background: #fff;
+            border: 2px solid #F5E6C8;
+            border-radius: 16px;
+            padding: 30px 20px;
+            transition: transform 0.2s;
+        }
+        .price-card.popular {
+            border-color: #C0392B;
+            position: relative;
+        }
+        .price-card.popular::before {
+            content: "PHO BIEN";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #C0392B;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        .price-card:hover {
+            transform: translateY(-4px);
+        }
+        .price-card h3 {
+            color: #3E2723;
+            margin-bottom: 8px;
+        }
+        .price-card .price {
+            font-size: 2em;
+            font-weight: bold;
+            color: #C0392B;
+            margin-bottom: 4px;
+        }
+        .price-card .period {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+        }
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .price-card ul li {
+            padding: 6px 0;
+        }
+        .price-card ul li::before {
+            content: "\2713 ";
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: #3E2723;
+            color: #F5E6C8;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .footer a {
+            color: #F5C842;
+            text-decoration: none;
+        }
+        .footer p {
+            margin: 6px 0;
+            font-size: 0.9em;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: #FFF3E0;
+            border-left: 4px solid #F5C842;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Privacy section */
+        .privacy {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .privacy h2 {
+            text-align: center;
+            color: #3E2723;
+            margin-bottom: 20px;
+        }
+        .privacy p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <img src="https://play-lh.googleusercontent.com/placeholder" alt="Tử Vi & Bói" onerror="this.style.display='none'">
+        <h1>Tử Vi & Bói</h1>
+        <p>Ung dung xem van menh bang tri tue nhan tao AI. Kham pha tu vi, boi bai, xem tuong, phong thuy va nhieu tinh nang thu vi khac.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.tuvidangianvn.app" class="download-btn">
+            Tai ve tren Google Play
+        </a>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+        <h2>Tinh Nang Noi Bat</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">&#9775;</div>
+                <h3>Tu Vi & So Menh</h3>
+                <p>La So Tu Vi phan tich 12 cung. Bat Tu Tu Tru tinh Can Chi 4 tru, ngu hanh. Cung Hoang Dao 12 chom sao voi van trinh chi tiet.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127183;</div>
+                <h3>Boi Bai & Cong Cu</h3>
+                <p>Boi bai Tarot 22 la Major Arcana. Boi bai Lenormand 36 la. Dong Xu Kinh Dich 64 que day du. Xam Que truyen thong.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#129504;</div>
+                <h3>Xem Tuong Bang AI</h3>
+                <p>Chup anh ban tay de AI phan tich duong chi. Nhan tuong hoc phan tich ngu quan. Xem not ruoi phan tich y nghia.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#127968;</div>
+                <h3>Phong Thuy</h3>
+                <p>Xem menh ngu hanh theo nam sinh. Huong nha hop menh. Tuoi hop khac cap doi. Phan tich so dien thoai va bien so xe.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128197;</div>
+                <h3>Lich Van Nien</h3>
+                <p>Am lich, can chi, tiet khi. Chon Ngay Tot cho 12 su kien quan trong trong cuoc song.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">&#128220;</div>
+                <h3>Van Khan & Tien Ich</h3>
+                <p>28 bai van khan truyen thong. Phan tich ho ten theo ngu hanh. Xem tuong hop cap doi.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium -->
+    <div class="premium">
+        <h2>Goi Premium</h2>
+        <p class="subtitle">Mo khoa tat ca tinh nang, khong gioi han luot su dung, khong quang cao</p>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Tuan</h3>
+                <div class="price">29.000d</div>
+                <div class="period">/ tuan</div>
+                <ul>
+                    <li>Khong gioi han luot boi</li>
+                    <li>Khong quang cao</li>
+                    <li>Tat ca tinh nang Premium</li>
+                </ul>
+            </div>
+            <div class="price-card popular">
+                <h3>Thang</h3>
+                <div class="price">69.000d</div>
+                <div class="period">/ thang</div>
+                <ul>
+                    <li>Khong gioi han luot boi</li>
+                    <li>Khong quang cao</li>
+                    <li>Tat ca tinh nang Premium</li>
+                    <li>Tiet kiem 40%</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <h3>Nam</h3>
+                <div class="price">249.000d</div>
+                <div class="period">/ nam</div>
+                <ul>
+                    <li>Khong gioi han luot boi</li>
+                    <li>Khong quang cao</li>
+                    <li>Tat ca tinh nang Premium</li>
+                    <li>Tiet kiem 70%</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <strong>Luu y:</strong> Ung dung mang tinh chat GIAI TRI va THAM KHAO. Cac ket qua tu vi, boi toan chi mang tinh chat tham khao, khong thay the cho tu van chuyen nghiep.
+    </div>
+
+    <!-- Privacy Policy -->
+    <div class="privacy" id="privacy">
+        <h2>Chinh Sach Bao Mat</h2>
+        <p>Ung dung "Tu Vi & Boi" cam ket bao ve quyen rieng tu cua nguoi dung.</p>
+        <p><strong>Thu thap du lieu:</strong> Chung toi chi thu thap thong tin ngay sinh ma nguoi dung tu nguyen cung cap de tinh toan tu vi. Thong tin nay duoc luu tru cuc bo tren thiet bi cua ban.</p>
+        <p><strong>Camera:</strong> Ung dung su dung camera chi khi nguoi dung chu dong chup anh de su dung tinh nang xem tuong bang AI. Anh chup khong duoc luu tru tren may chu.</p>
+        <p><strong>Quang cao:</strong> Ung dung su dung Google AdMob de hien thi quang cao. Google co the thu thap du lieu de ca nhan hoa quang cao theo chinh sach cua Google.</p>
+        <p><strong>Thanh toan:</strong> Viec thanh toan goi Premium duoc xu ly boi Google Play. Chung toi khong truc tiep thu thap thong tin thanh toan cua ban.</p>
+        <p><strong>Lien he:</strong> Neu ban co bat ky cau hoi nao ve chinh sach bao mat, vui long lien he: contactphapmedia.glitch@gmail.com</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>Tu Vi & Boi - Xem Van Menh AI</strong></p>
+        <p>&copy; 2026 Phap Media. All rights reserved.</p>
+        <p>
+            <a href="#privacy">Chinh Sach Bao Mat</a> |
+            <a href="https://play.google.com/store/apps/details?id=com.tuvidangianvn.app">Google Play</a>
+        </p>
+    </div>
+
+</body>
+</html>
+
